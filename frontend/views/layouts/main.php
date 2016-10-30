@@ -59,7 +59,7 @@ if(!Yii::$app->user->isGuest) {
             ['label' => 'Profile', 'url' => ['/user/settings/profile']],
             ['label' => 'Api Setting', 'url' => ['/api-settings/index']],
             '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
+                . Html::beginForm(['/user/security/logout'], 'post')
                 . Html::submitButton(
                     'Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link']
