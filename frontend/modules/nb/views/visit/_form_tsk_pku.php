@@ -21,7 +21,7 @@ use yii\widgets\Pjax;
     <?= GridView::widget([
             'id'=>'grid-tsk-pku',
             'dataProvider' => $dataProvider,
-            'filterModel'  => $searchModel,
+            //'filterModel'  => $searchModel,
             'tableOptions'=>['class'=>'table table-striped'],
             'columns'      => [
                 ['class' => 'yii\grid\SerialColumn','options'=>['style'=>'width:30px;']],

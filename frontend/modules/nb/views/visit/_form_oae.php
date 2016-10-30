@@ -22,7 +22,7 @@ use yii\widgets\Pjax;
   <?= GridView::widget([
         'id'=>'grid-oae',
         'dataProvider' => $dataProvider,
-        'filterModel'  => $searchModel,
+        //'filterModel'  => $searchModel,
         'tableOptions'=>['class'=>'table table-striped'],
         'columns'      => [
             ['class' => 'yii\grid\SerialColumn','options'=>['style'=>'width:30px;']],
@@ -31,9 +31,8 @@ use yii\widgets\Pjax;
               'format'=>'dateTime',
               'options'=>['style'=>'width:150px;']
             ],
-
-            'oae_left',
-            'oae_right',
+            'oatLeftStatusLabel',
+            'oatRightStatusLabel',
             [
               'class' => 'yii\grid\ActionColumn',
               'controller'=>'visit-screening',

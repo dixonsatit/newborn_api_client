@@ -39,6 +39,7 @@
         "process-timeout": 1800
     },
     "extra": {
+        "asset-optimize-with-installed-packages": false,
         "asset-installer-paths": {
             "npm-asset-library": "vendor/npm",
             "bower-asset-library": "vendor/bower"

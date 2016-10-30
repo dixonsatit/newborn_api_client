@@ -60,7 +60,7 @@ class VisitScreening extends ActiveRecord
             [['check_date'], 'required'],
             [['hospcode', 'patient_visit', 'created_at', 'updated_at', 'created_by', 'updated_by','oae_left_status','oae_right_status'], 'integer'],
             [['type', 'result','oae_left','oae_right','rop_left','rop_right'], 'string'],
-            [['ivh',], 'string','max'=>100],
+            [['ivh','ivh_grade'], 'string','max'=>100],
             [['check_date'], 'safe'],
         ];
     }
@@ -95,7 +95,10 @@ class VisitScreening extends ActiveRecord
             'rop_left_plus' => 'With Plus',
             'rop_right_plus' => 'With Plus',
             'rop_plus' => 'ROP Plus',
-            'ivh_grade'=> 'IVH Grade'
+            'ivh_grade'=> 'IVH Grade',
+            'oatLeftStatusLabel'=> 'ด้ายซ้าย',
+            'oatRightStatusLabel'=> 'ด้านขวา',
+            'ivhGradeLabel'=> 'Grade Label'
         ];
     }
 
@@ -117,6 +120,18 @@ class VisitScreening extends ActiveRecord
     {
         $d = \DateTime::createFromFormat($format, $date);
         return $d && $d->format($format) == $date;
+    }
+
+    public function getOatLeftStatusLabel(){
+        return $this->getItemsLabel('success/failed',$this->oae_left_status);
+    }
+
+    public function getOatRightStatusLabel(){
+        return $this->getItemsLabel('success/failed',$this->oae_right_status);
+    }
+
+    public function getIvhGradeLabel(){
+        return $this->getItemsLabel('ivh_grade',$this->ivh_grade);
     }
 
     public function getItemsType()
