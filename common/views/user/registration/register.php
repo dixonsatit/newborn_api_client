@@ -33,7 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     'enableAjaxValidation'   => true,
                     'enableClientValidation' => false,
                 ]); ?>
-
                 <?= $form->errorSummary($model); ?>
                 <?= $form->field($model, 'email') ?>
 

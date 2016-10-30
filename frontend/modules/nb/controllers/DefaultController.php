@@ -2,6 +2,7 @@
 
 namespace frontend\modules\nb\controllers;
 
+use Yii;
 use yii\web\Controller;
 
 /**
