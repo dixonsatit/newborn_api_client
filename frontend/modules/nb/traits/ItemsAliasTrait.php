@@ -92,8 +92,14 @@ trait ItemsAliasTrait {
       return $interval->format($differenceFormat);
   }
 
-  public function getCurrentAge( $attribute, $format = '%y' )
+  public function getCurrentAge( $attribute, $format = null )
   {
+    if($format === null){
+      $str   = ($y = (int) $this->dateDifference($this->getOldAttribute($attribute), date('Y-m-d'), '%y')) > 0 ? $y.' ปี,' : null;
+      $str   = ($y = (int) $this->dateDifference($this->getOldAttribute($attribute), date('Y-m-d'), '%m')) > 0 ? $y.' เดือน,' : null;
+      $str   = ($y = (int) $this->dateDifference($this->getOldAttribute($attribute), date('Y-m-d'), '%d')) > 0 ? $y.' วัน': null;
+      return $str;
+    }
     return $this->dateDifference($this->getOldAttribute($attribute), date('Y-m-d'), $format);
   }
 }

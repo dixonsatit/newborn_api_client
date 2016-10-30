@@ -105,6 +105,7 @@ class PersonController extends Controller
         $model->register_date = date('d-m-').(date('Y')+543);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
             return $this->redirect(['update', 'id' => $model->newborn_id]);
         } else {
             return $this->render('create', [
@@ -125,6 +126,7 @@ class PersonController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
             return $this->refresh();
         } else {
             return $this->render('update', [
@@ -138,6 +140,7 @@ class PersonController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
             return $this->refresh();
         } else {
             return $this->render('newborn_baby', [
@@ -151,6 +154,7 @@ class PersonController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
             return $this->refresh();
         } else {
             return $this->render('parent', [

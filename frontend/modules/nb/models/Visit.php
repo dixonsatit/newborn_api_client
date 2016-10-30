@@ -88,7 +88,7 @@ class Visit extends \yii\db\ActiveRecord
     {
         return [
             [['patient_id', 'hospcode', 'hn'], 'required'],
-            [['patient_id', 'age', 'bp_max', 'bp_min', 'created_by', 'updated_by', 'created_at', 'updated_at', 'milk', 'milk_milk_powder', 'milk_powder', 'discharge_status'], 'integer'],
+            [['patient_id', 'bp_max', 'bp_min', 'created_by', 'updated_by', 'created_at', 'updated_at', 'milk', 'milk_milk_powder', 'milk_powder', 'discharge_status'], 'integer'],
             [['date', 'refer_date', 'discharge_date', 'tsh_pku_date', 'tsh_pku_time', 'oae_date', 'oae_abr', 'ivh_date', 'rop_date', 'lastupdate', 'vaccine', 'disease', 'complication', 'procedure_code'], 'safe'],
             [['age_type', 'tsh_pku_result', 'ivh_result', 'summary'], 'string'],
             [['head_size', 'height', 'weight', 'waist'], 'number'],
@@ -99,7 +99,7 @@ class Visit extends \yii\db\ActiveRecord
             [['tsh_pku', 'oae', 'ivh_ult_brain', 'rop'], 'string', 'max' => 3],
             [['oae_right', 'oae_left', 'oae_result', 'rop_result', 'rop_hosp_appointment'], 'string', 'max' => 255],
             [['ga', 'hc', 'length', 'af', 'x'], 'string', 'max' => 20],
-            [['foster_name'], 'string', 'max' => 100],
+            [['foster_name','age'], 'string', 'max' => 100],
             [['vaccine_other'], 'string', 'max' => 200],
             [['refer_province_code', 'refer_hospcode', 'refer_from_hospcode'], 'string', 'max' => 6],
         ];
