@@ -73,7 +73,17 @@ $this->params['breadcrumbs'][] = $this->title;
             //     }
             //   }
             // ],
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+              'class' => 'yii\grid\ActionColumn',
+              'template'=> '{view}  {delete}',
+              'template' => '<div class="btn-group btn-group-sm text-center" role="group">{vaccine} {clinic}  {icd10} {development} {delete}</div>',
+              'buttonOptions'=>['class'=>'btn btn-default'],
+              'visibleButtons' => [
+                'delete' => function ($model, $key, $index) {
+                    return $model->isSend;
+                }
+              ]
+            ],
         ],
     ]); ?>
 <?php Pjax::end(); ?>

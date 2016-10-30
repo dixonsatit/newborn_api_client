@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model frontend\modules\nb\models\Refer */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Refers', 'url' => ['index']];
+$this->title = 'รายละเอียดการรับ Refer ผู้ป่วย';
+$this->params['breadcrumbs'][] = ['label' => 'ทะเบียนส่งต่อผู้ป่วย (Refer Out)', 'url' => ['out']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="xpanel">
@@ -20,35 +20,16 @@ $this->params['breadcrumbs'][] = $this->title;
   </div>
 
   <div class="panel-body refer-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
     <?= DetailView::widget([
+        'options'=>['class'=>'table table-striped'],
         'model' => $model,
         'attributes' => [
-            'id',
-            'hospcode',
-            'patient_id',
-            'visit_id',
-            'refer_to',
-            'status',
-            'irefer_id',
-            'created_at',
-            'created_by',
-            'updated_at',
-            'updated_by',
-            'refer_hospital_name',
+            'hospitalName',
+            'personFullname',
+            'statusLabel',
+            'refer_date:Date',
+            'created_at:date',
+            'userFullname'
         ],
     ]) ?>
 

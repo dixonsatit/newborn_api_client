@@ -11,6 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'defaultRoute'=>'/nb/person/index',
     'modules'=>[
         // 'rbac' => [
         //     'class' => 'mdm\admin\Module',

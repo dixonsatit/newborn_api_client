@@ -145,5 +145,9 @@ class Refer extends \yii\db\ActiveRecord
         return $this->getItemsLabel('refer_status_out',$this->status);
     }
 
+    public function getIsSend(){
+        return self::STATUS_SEND == $this->status;
+    }
+
      
 }
