@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <!-- =============== TSK PKU Screening=========================== -->
 <?php if(!$model->isNewRecord): ?>
-<?= $this->render('_form_tsk_pku',[
+<?= $this->render('_grid_tsk_pku',[
   'model'   => $model,
   'patient' => $person,
   'id'      => $id,
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <!-- =============== OAE Screening=========================== -->
 <?php if(!$model->isNewRecord): ?>
-<?= $this->render('_form_oae',[
+<?= $this->render('_grid_oae',[
   'model'   => $model,
   'patient' => $person,
   'id'      => $id,
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <!-- =============== IVH Screening=========================== -->
 <?php if(!$model->isNewRecord): ?>
-<?= $this->render('_form_ivh',[
+<?= $this->render('_grid_ivh',[
   'model'   => $model,
   'patient' =>  $person,
   'id'      => $id,
@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <!-- =============== ROP Screening=========================== -->
 <?php if(!$model->isNewRecord): ?>
-<?= $this->render('_form_rop',[
+<?= $this->render('_grid_rop',[
   'model'   => $model,
   'patient' =>  $person,
   'id'      => $id,

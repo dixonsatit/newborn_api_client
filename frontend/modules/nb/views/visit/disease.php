@@ -55,7 +55,6 @@ $pluginOptionsIcdten['ajax']['url'] = Url::to(['/nb/api/icdcodes/icdten']);
 
 $pluginOptionsIcdnine = $pluginOptions;
 $pluginOptionsIcdnine['ajax']['url'] = Url::to(['/nb/api/icdcodes/icdnine']);
-echo $person->newborn_id;
 ?>
 
 <?php $form = ActiveForm::begin(); ?>
