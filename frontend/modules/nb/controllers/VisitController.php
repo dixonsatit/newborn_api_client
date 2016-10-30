@@ -98,7 +98,7 @@ class VisitController extends Controller
     public function actionDisease($id, $visit_id)
     {
         $model   = $this->findModel($visit_id);
-        $person  = $this->findModelPerson($model);
+        $person  = $this->findModelPerson($model->patient_id);
         $model->fieldToArray(['vaccine', 'disease', 'complication', 'procedure_code']);
 
         $initDisease = Icdcode::find()->findAllByCode($model->disease)->select(['CONCAT("(",`code`,") ",`description`)'])->indexBy('code')->column();
