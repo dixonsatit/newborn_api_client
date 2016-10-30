@@ -13,6 +13,7 @@ use frontend\modules\nb\models\VisitScreeningSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;;
+use yii\filters\AccessControl;
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 
@@ -27,6 +28,16 @@ class VisitController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        //'actions' => ['index','create','update','delete','view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

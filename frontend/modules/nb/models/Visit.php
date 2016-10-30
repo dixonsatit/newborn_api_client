@@ -262,15 +262,14 @@ class Visit extends \yii\db\ActiveRecord
     public function getItemAilas($key)
     {
         $items = [
-        'province' => [
-          '40' => 'ขอนแก่น',
-          '44' => 'มหาสารคาม',
-          '45' => 'ร้อยเอ็ด',
-          '46' => 'กาฬสินธุ์',
-          '0' => 'อื่นๆ',
-        ],
-      ];
-
+            'province' => [
+            '40' => 'ขอนแก่น',
+            '44' => 'มหาสารคาม',
+            '45' => 'ร้อยเอ็ด',
+            '46' => 'กาฬสินธุ์',
+            '0' => 'อื่นๆ',
+            ],
+        ];
         return array_key_exists($key, $items) ? $items[$key] : [];
     }
 
@@ -308,5 +307,12 @@ class Visit extends \yii\db\ActiveRecord
     public function getRefer()
     {
         return $this->hasOne(Refer::className(), ['visit_id' => 'visit_id']);
+    }
+
+    public function getIsRefer(){
+        return !empty($this->refer_hospcode);
+    }
+    public function getIsRecive(){
+        return !empty($this->refer_from_hospcode);
     }
 }

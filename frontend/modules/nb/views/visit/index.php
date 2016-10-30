@@ -41,10 +41,12 @@ $this->params['breadcrumbs'][] = $this->title;
                   'attribute'=>'date',
                   'format'=>'raw',
                   'value' => function($model){
-                    return  Html::a(($model->isOwnHospital? '<i class="glyphicon glyphicon-ok-circle"></i> ':null).Yii::$app->formatter->asDate($model->date),['update','id'=> $model->patient_id,'visit_id'=>$model->visit_id],[
+                    $isRefer = $model->isRefer ? '<i title="ส่ง refer ต่อที่ '.$model->hospitalReferToName.'" class="glyphicon glyphicon-new-window"></i>' : '';
+                    $isRecive = $model->isRecive ? '<i title="รับ refer จาก '.$model->hospitalReferFromName.'" class="glyphicon glyphicon-log-out"></i>' : '';
+                    return  $isRecive.' '.Html::a(($model->isOwnHospital? '<i class="glyphicon glyphicon-ok-circle"></i> ':null).Yii::$app->formatter->asDate($model->date),['update','id'=> $model->patient_id,'visit_id'=>$model->visit_id],[
                       'style'=> $model->isOwnHospital?'color:#1799dd;': '',
                       'data'=>['pjax'=>'0']
-                    ]);
+                    ]).' '.$isRefer;
                   }
                 ],
                 'hospitalName',
