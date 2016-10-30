@@ -99,11 +99,13 @@ class PersonController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Person();
+        $model = new Person([
+            'hospcode' => Yii::$app->user->identity->profile->hcode
+        ]);
         $model->register_date = date('d-m-').(date('Y')+543);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->newborn_id]);
+            return $this->redirect(['update', 'id' => $model->newborn_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,

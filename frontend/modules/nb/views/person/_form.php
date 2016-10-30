@@ -12,6 +12,7 @@ use kartik\typeahead\Typeahead;
 <?php $form = ActiveForm::begin([
   'id'=>'person-form'
 ]); ?>
+<?= $form->errorSummary($model); ?>
 
 <div class="<?=$model->isNewRecord ? 'xpanel' : 'xpanel-tab' ?>" id="personal-data">
 
