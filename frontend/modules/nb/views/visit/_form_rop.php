@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
        <span class="xpanel-title">
          <i class="fa fa-stethoscope"></i> ROP Screening
        </span>
-       <span class="pull-right"> <?= Html::a('  <i class="glyphicon glyphicon-plus"></i> เพิ่ม',['/nb/visit-screening/create','id'=>$id,'visit_id'=>$model->visit_id,'type'=>'rop'],[
+       <span class="pull-right"> <?= Html::a('  <i class="glyphicon glyphicon-plus"></i> เพิ่ม',['/nb/visit-screening/create','visit_id'=>$model->visit_id,'type'=>'rop'],[
        'class'=>'btn-modal btn btn-primary pull-right',
        'data'=>['type'=>'rop']
        ]);?></span>
@@ -27,9 +27,17 @@ use yii\widgets\Pjax;
         'columns'      => [
             ['class' => 'yii\grid\SerialColumn','options'=>['style'=>'width:30px;']],
             [
-              'attribute'=>'check_date',
-              'format'=>'dateTime',
-              'options'=>['style'=>'width:150px;']
+              'attribute' => 'check_date',
+              'format' => 'raw',
+              'options' => ['style'=>'width:150px;'],
+              'value' => function($model){
+                return Html::a($model->check_date,[
+                    '/nb/visit-screening/create',
+                    'visit_id' => $model->visit_id,
+                    'type' => 'rop',
+                    'id' => $model->id
+                  ],['class'=>'btn-modal','data'=>['pjax'=>'0']]);
+              }
             ],
             'ropLeftStageLabel',
             'rop_left_zone',

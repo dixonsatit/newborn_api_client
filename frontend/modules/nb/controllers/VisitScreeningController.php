@@ -63,16 +63,25 @@ class VisitScreeningController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($visit_id, $type)
+    public function actionCreate($visit_id, $type, $id=null)
     {
         $visit = $this->findModelVisit($visit_id);
-        $models = [new VisitScreening([
-          'visit_id' => $visit->visit_id,
-          'patient_id' => $visit->patient_id,
-          'type' => $type,
-          'hospcode' => Yii::$app->user->identity->profile->hcode,
-          'check_date' => date('d-m-').(date('Y')+543).date(' H:i')
-        ])];
+        if($id != null) {
+            $models = VisitScreening::findAll([
+               'id'=> $id
+            ]);
+            
+        }else{
+            $models = [new VisitScreening([
+            'visit_id' => $visit->visit_id,
+            'patient_id' => $visit->patient_id,
+            'type' => $type,
+            'hospcode' => Yii::$app->user->identity->profile->hcode,
+            'check_date' => date('d-m-').(date('Y')+543).date(' H:i')
+            ])];
+        }
+
+
 
         if(!in_array($type,$models[0]->getItemsType())){
           throw new NotFoundHttpException('The requested type does not exist.');
@@ -83,12 +92,6 @@ class VisitScreeningController extends Controller
         }
         elseif($type=='ivh'){
           $view = 'ivh';
-        }
-        elseif($type=='ivh'){
-          $view = 'ivh';
-        }
-        elseif($type=='untrasound'){
-          $view = 'untrasound';
         }
         elseif($type=='rop'){
           $view = 'rop';

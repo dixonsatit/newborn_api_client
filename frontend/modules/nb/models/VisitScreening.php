@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\AttributeBehavior;
+use common\behaviors\AttributeValueBehavior;
 use \yii\db\ActiveRecord;
 /**
  * This is the model class for table "patient_visit_screening".
@@ -37,6 +38,15 @@ class VisitScreening extends ActiveRecord
         return [
             TimestampBehavior::className(),
             BlameableBehavior::className(),
+            [
+                'class' => AttributeValueBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_AFTER_FIND => ['check_date'],
+                ],
+                'value' => function ($event, $attribute) {
+                    return $this->setThaiFormatdate($attribute);
+                },
+            ],
             [
               'class' => AttributeBehavior::className(),
               'attributes' => [
