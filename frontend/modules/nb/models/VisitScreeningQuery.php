@@ -11,7 +11,7 @@ class VisitScreeningQuery extends \yii\db\ActiveQuery
 {
     public function byPatientVisit($visit_id,$type)
     {
-        return $this->andWhere(['patient_visit'=>$visit_id,'type'=>$type]);
+        return $this->andWhere(['visit_id'=>$visit_id,'type'=>$type]);
     }
 
     /**

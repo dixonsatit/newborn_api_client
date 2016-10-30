@@ -31,9 +31,12 @@ use yii\widgets\Pjax;
               'format'=>'dateTime',
               'options'=>['style'=>'width:150px;']
             ],
-
-            'rop_left',
-            'rop_right',
+            'ropLeftStageLabel',
+            'rop_left_zone',
+            'rop_right_plus',
+            'ropRightStageLabel',
+            'rop_right_zone',
+            'rop_right_plus',
             [
               'class' => 'yii\grid\ActionColumn',
               'controller'=>'visit-screening',

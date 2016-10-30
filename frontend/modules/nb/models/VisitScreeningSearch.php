@@ -18,7 +18,7 @@ class VisitScreeningSearch extends VisitScreening
     public function rules()
     {
         return [
-            [['id', 'hospcode', 'patient_visit'], 'integer'],
+            [['id', 'hospcode', 'visit_id'], 'integer'],
             [['type', 'check_date', 'result','oae_left','oae_right','ivh'], 'safe'],
         ];
     }
@@ -66,7 +66,7 @@ class VisitScreeningSearch extends VisitScreening
         $query->andFilterWhere([
             'id' => $this->id,
             'hospcode' => $this->hospcode,
-            'patient_visit' => $this->patient_visit,
+            'visit_id' => $this->visit_id,
             'check_date' => $this->check_date
         ]);
 

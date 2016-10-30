@@ -99,7 +99,7 @@ class Person extends ActiveRecord
     public function rules()
     {
         return [
-            [['hospcode', 'hn', 'cid', 'prename', 'name', 'lname', 'sex', 'birth','mother','mother_name'], 'required'],
+            [['hospcode', 'pid', 'cid', 'prename', 'name', 'lname', 'sex', 'birth','mother','mother_name'], 'required'],
             [['birth', 'movein', 'ddischarge', 'd_update','register_date'], 'safe'],
             [['hospcode'], 'string', 'max' => 5],
             [['cid', 'father', 'mother', 'couple'], 'string', 'max' => 17],

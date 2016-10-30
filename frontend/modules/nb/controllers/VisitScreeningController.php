@@ -4,6 +4,7 @@ namespace frontend\modules\nb\controllers;
 
 use Yii;
 use frontend\modules\nb\models\VisitScreening;
+use frontend\modules\nb\models\Visit;
 use frontend\modules\nb\models\VisitScreeningSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -62,10 +63,12 @@ class VisitScreeningController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($id, $visit_id, $type)
+    public function actionCreate($visit_id, $type)
     {
+        $visit = $this->findModelVisit($visit_id);
         $models = [new VisitScreening([
-          'patient_visit' => $visit_id,
+          'visit_id' => $visit->visit_id,
+          'patient_id' => $visit->patient_id,
           'type' => $type,
           'hospcode' => Yii::$app->user->identity->profile->hcode,
           'check_date' => date('d-m-').(date('Y')+543).date(' H:i')
@@ -142,8 +145,7 @@ class VisitScreeningController extends Controller
         $model = $this->findModel($id);
         $patient_visit = $model->patient_visit;
         $model->delete();
-
-        //return $this->redirect(['/newborn7/patient-visit/update','id'=>4,'visit_id'=>$patient_visit]);
+        return $this->redirect(['/nb/visit/screening','id'=>4,'visit_id'=>$patient_visit]);
     }
 
     /**
@@ -156,6 +158,15 @@ class VisitScreeningController extends Controller
     protected function findModel($id)
     {
         if (($model = VisitScreening::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    protected function findModelVisit($id)
+    {
+        if (($model = Visit::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

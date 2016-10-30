@@ -50,7 +50,7 @@ trait ItemsAliasTrait {
 
   public function setStandardFormatdate($field)
   {
-    if(strlen($this->{$field}) >= 10){
+    if(!in_array($this->{$field},['0000-00-00','0000-00-00 00:00:00']) || strlen($this->{$field}) >= 10){
       return (date('Y',strtotime($this->{$field}))-543).date('-m-d',strtotime($this->{$field})).' '.date('H:i:s',strtotime($this->{$field}));
     }else{
       return (date('Y',strtotime($this->{$field}))-543).date('-m-d',strtotime($this->{$field}));

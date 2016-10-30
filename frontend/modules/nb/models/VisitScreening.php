@@ -12,7 +12,7 @@ use \yii\db\ActiveRecord;
  *
  * @property integer $id
  * @property integer $hospcode
- * @property integer $patient_visit
+ * @property integer $visit_id
  * @property string $type
  * @property string $check_date
  * @property string $result
@@ -58,9 +58,11 @@ class VisitScreening extends ActiveRecord
     {
         return [
             [['check_date'], 'required'],
-            [['hospcode', 'patient_visit', 'created_at', 'updated_at', 'created_by', 'updated_by','oae_left_status','oae_right_status'], 'integer'],
+            [['hospcode', 'visit_id', 'created_at', 'updated_at', 'created_by', 'updated_by','oae_left_status','oae_right_status','rop_left_zone','rop_right_zone','patient_id'], 'integer'],
             [['type', 'result','oae_left','oae_right','rop_left','rop_right'], 'string'],
             [['ivh','ivh_grade'], 'string','max'=>100],
+            [['rop_right_stage','rop_left_stage'], 'string','max'=>100],
+            [['rop_left_plus','rop_right_plus'], 'string','max'=>20],
             [['check_date'], 'safe'],
         ];
     }
@@ -73,7 +75,7 @@ class VisitScreening extends ActiveRecord
         return [
             'id' => 'ID',
             'hospcode' => 'Hospcode',
-            'patient_visit' => 'Patient Visit',
+            'visit_id' => 'Patient Visit',
             'type' => 'Type',
             'check_date' => 'วันที่ตรวจ',
             'result' => 'ผลตรวจ',
@@ -98,7 +100,9 @@ class VisitScreening extends ActiveRecord
             'ivh_grade'=> 'IVH Grade',
             'oatLeftStatusLabel'=> 'ด้ายซ้าย',
             'oatRightStatusLabel'=> 'ด้านขวา',
-            'ivhGradeLabel'=> 'Grade Label'
+            'ivhGradeLabel'=> 'Grade Label',
+            'ropLeftStageLabel'=> 'ผลตรวจตาข้างซ้าย',
+            'ropRightStageLabel'=> 'ผลตรวจตาข้างขวา'
         ];
     }
 
@@ -128,6 +132,15 @@ class VisitScreening extends ActiveRecord
 
     public function getOatRightStatusLabel(){
         return $this->getItemsLabel('success/failed',$this->oae_right_status);
+    }
+
+
+    public function getRopLeftStageLabel(){
+        return $this->getItemsLabel('rop_stage',$this->rop_left_stage);
+    }
+
+    public function getRopRightStageLabel(){
+        return $this->getItemsLabel('rop_stage',$this->rop_right_stage);
     }
 
     public function getIvhGradeLabel(){

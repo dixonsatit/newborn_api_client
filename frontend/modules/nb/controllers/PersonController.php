@@ -100,7 +100,10 @@ class PersonController extends Controller
     public function actionCreate()
     {
         $model = new Person([
-            'hospcode' => Yii::$app->user->identity->profile->hcode
+            'hospcode' => Yii::$app->user->identity->profile->hcode,
+            'admit_datetime' => '0000-00-00 00:00:00',
+            'date_of_resuscitate' => '0000-00-00 00:00:00',
+            'discharge_date' => '0000-00-00'
         ]);
         $model->register_date = date('d-m-').(date('Y')+543);
 
