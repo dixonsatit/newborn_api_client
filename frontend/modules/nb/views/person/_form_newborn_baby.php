@@ -122,27 +122,28 @@ use kartik\typeahead\Typeahead;
     </div>
   </div>
 
-  <div class="xpanel">
+    <!-- <div class="xpanel">
     <div class="xpanel-heading-sm">
         <span class="xpanel-title">
           ข้อมูลการจำหน่าย
         </span>
     </div>
 
-    <div class="panel-body person-form">
+   <div class="panel-body person-form">
       <div class="row">
         <div class="col-md-3">
-            <?= $form->field($model, 'discharge_status')->inline()->radioList($model->getItems('status_discharge')) ?>
+            <?php //$form->field($model, 'discharge_status')->inline()->radioList($model->getItems('status_discharge')) ?>
         </div>
         <div class="col-md-3">
-            <?= $form->field($model, 'discharge_date')->widget(MaskedInput::className(), ['mask' => '99-99-9999']) ?>
+            <?php //$form->field($model, 'discharge_date')->widget(MaskedInput::className(), ['mask' => '99-99-9999']) ?>
         </div>
         <div class="col-md-2">
-          <?= $form->field($model, 'discharge_age')->textInput(['maxlength' => true]) ?>
+          <?php //$form->field($model, 'discharge_age')->textInput(['maxlength' => true]) ?>
         </div>
       </div>
     </div>
   </div>
+  -->
 
   <div class="form-group pull-right" style="padding-right:10px;">
         <?= $submit ?>

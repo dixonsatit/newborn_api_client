@@ -49,6 +49,9 @@ class PersonSearch extends Person
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> [
+                'defaultOrder'=>['newborn_id'=>SORT_DESC]
+            ]
         ]);
 
         $dataProvider->sort->attributes['fullName'] = [
