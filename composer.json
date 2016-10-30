@@ -49,7 +49,6 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "composer config -g github-oauth.github.com bb94d2416480e76c42244d1f44902584412f8667",
             "php init --env=Development --overwrite=n"
         ]
     }
