@@ -94,6 +94,7 @@ if(!Yii::$app->user->isGuest) {
 </footer>
 
 <?php $this->endBody() ?>
+<?=$this->render('_google_analytics');?>
 </body>
 </html>
 <?php $this->endPage() ?>
