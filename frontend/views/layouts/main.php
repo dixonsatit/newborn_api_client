@@ -47,8 +47,8 @@ if(!Yii::$app->user->isGuest) {
         //['label' => 'Contact', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/user/registration/register']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/user/security/login']];
+        $menuItems[] = ['label' => 'ลงทะเบียน', 'url' => ['/user/registration/register']];
+        $menuItems[] = ['label' => 'เข้าสู่ระบบ', 'url' => ['/user/security/login']];
     } else {
         $menuItems[] = ['label' => '<i class="glyphicon glyphicon-th-list"></i> '.'ทะเบียนเด็กทารก', 'url' => ['/nb/person/index']];
         $menuItems[] = ['label' => '<i class="fa fa-ambulance"></i> ทะเบียน Refer'.$countRefer, 'items' => [
