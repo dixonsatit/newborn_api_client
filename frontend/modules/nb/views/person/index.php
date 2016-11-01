@@ -6,7 +6,6 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\modules\nb\models\PersonSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
 $this->title = 'ทะเบียนทารกแรกเกิด';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

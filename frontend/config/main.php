@@ -12,6 +12,13 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'defaultRoute'=>'/nb/person/index',
+    'as access' => [
+        'class' => 'common\components\ProfileFilter',
+        'allowActions' => [
+            'site/*',
+            'user/*',
+        ]
+    ],
     'modules'=>[
         // 'rbac' => [
         //     'class' => 'mdm\admin\Module',
@@ -28,7 +35,7 @@ return [
               'User' => 'common\models\user\User',
             ],
             'mailer' => [
-                'sender' => ['ihospitallog@gmail.com' => 'ระบบข้อมูลสุขภาพที่ 7'],
+                'sender' => ['newborn.kkh@gmail.com' => 'ระบบข้อมูลสุขภาพที่ 7'],
                 'welcomeSubject' => 'ยินดีต้อนรับสู่ระบบข้อมูลสุขภาพที่ 7',
                 'confirmationSubject' => 'ยืนยันการลงทะเบียนระบบข้อมูลสุขภาพที่ 7',
                 'reconfirmationSubject' => 'ส่งข้อมูลรหัสยืนยันเพื่อลงทะเบียนระบบข้อมูลสุขภาพที่ 7',
@@ -114,13 +121,6 @@ return [
         ],
         
     ],
-    // 'as access' => [
-    //     'class' => 'mdm\admin\classes\AccessControl',
-    //     'allowActions' => [
-    //         'site/*',
-    //         'rbac/*',
-    //     ]
-    // ],
     'params' => $params,
 
 ];
