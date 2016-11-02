@@ -49,12 +49,15 @@ class ProfileFilter extends ActionFilter
     {
         $actionId = $action->getUniqueId();
         $user = $this->getUser();
-        if(empty($user->identity->profile->hcode)){
-            Yii::$app->session->setFlash('warning', 'คุณยังไม่ได้กรอกข้อมูลส่วนตัวและโรงพยาบาลที่สังกัด!..');
-            Yii::$app->getResponse()->refresh();
-            Yii::$app->getResponse()->redirect(['/user/settings/profile']);
-            return false;
+        if(!$user->getIsGuest()){
+            if(empty($user->identity->profile->hcode)){
+                Yii::$app->session->setFlash('warning', 'คุณยังไม่ได้กรอกข้อมูลส่วนตัวและโรงพยาบาลที่สังกัด!..');
+                Yii::$app->getResponse()->refresh();
+                Yii::$app->getResponse()->redirect(['/user/settings/profile']);
+                return false;
+            }
         }
+
         return parent::beforeAction($action);
     }
 

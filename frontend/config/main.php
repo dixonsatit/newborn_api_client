@@ -81,6 +81,9 @@ return [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
+                'signup' => '/user/registration/register',
+                'login' => '/user/security/login',
+                'logout' => '/user/security/logout',
                  [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => [
