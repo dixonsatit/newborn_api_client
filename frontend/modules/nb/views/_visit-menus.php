@@ -26,7 +26,7 @@ use yii\helpers\Html;
                 'url' => ['/nb/visit-develop/create','visit_id' => $visit->visit_id],
             ],
             [
-                'label' => 'การจำหน่าย',
+                'label' => 'การรับรักษาและจำหน่าย',
                 'url' => ['/nb/visit/discharge','visit_id' => $visit->visit_id],
             ]
         ],

@@ -11,6 +11,7 @@ use kartik\depdrop\DepDrop;
 use yii\bootstrap\Modal;
 use common\models\Hospital;
 
+
 /* @var $this yii\web\View */
 /* @var $model frontend\modules\newborn7\models\PatientVisit */
 /* @var $form yii\widgets\ActiveForm */
@@ -25,6 +26,7 @@ use common\models\Hospital;
       ]); 
   ?>
 </div>
+
 
 <div class="xpanel visit-index">
   <div class="xpanel-heading-sm">
@@ -150,6 +152,4 @@ use common\models\Hospital;
     <?= Html::submitButton($model->isNewRecord ? '<i class=""></i> บันทึก' : 'บันทึก', ['class' => ($model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'). ' pull-right']) ?>
   <?php endif; ?>
 </div>
-
-
 <?php ActiveForm::end(); ?>

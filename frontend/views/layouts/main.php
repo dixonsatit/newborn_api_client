@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\web\View;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -94,7 +95,9 @@ if(!Yii::$app->user->isGuest) {
 </footer>
 
 <?php $this->endBody() ?>
-<?=$this->render('_google_analytics');?>
+<?=$this->render('_google_analytics');?> 
+<?php  $this->registerJs(" function setHideInput(set,value,objTarget) { if(set==value) { $(objTarget).show(500); } else { $(objTarget).hide(500); } }",View::POS_END);?>
 </body>
 </html>
 <?php $this->endPage() ?>
+

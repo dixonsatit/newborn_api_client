@@ -166,6 +166,7 @@ class VisitController extends Controller
           'age' => $person->getCurrentAge('birth'),
           'discharge_date' => '0000-00-00',
           'refer_date' => '0000-00-00',
+          'admit_date' => '0000-00-00',
           'refer_from_hospcode' => $refer !== null ? $refer->hospcode : null
         ]);
 

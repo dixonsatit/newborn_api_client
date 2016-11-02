@@ -88,8 +88,8 @@ class Visit extends \yii\db\ActiveRecord
     {
         return [
             [['patient_id', 'hospcode', 'hn'], 'required'],
-            [['patient_id', 'bp_max', 'bp_min', 'created_by', 'updated_by', 'created_at', 'updated_at', 'milk', 'milk_milk_powder', 'milk_powder', 'discharge_status'], 'integer'],
-            [['date', 'refer_date', 'discharge_date', 'tsh_pku_date', 'tsh_pku_time', 'oae_date', 'oae_abr', 'ivh_date', 'rop_date', 'lastupdate', 'vaccine', 'disease', 'complication', 'procedure_code'], 'safe'],
+            [['patient_id', 'bp_max', 'bp_min', 'created_by', 'updated_by', 'created_at', 'updated_at', 'milk', 'milk_milk_powder', 'milk_powder', 'discharge_status','is_admit'], 'integer'],
+            [['date', 'refer_date', 'discharge_date', 'tsh_pku_date', 'tsh_pku_time', 'oae_date', 'oae_abr', 'ivh_date', 'rop_date', 'lastupdate', 'vaccine', 'disease', 'complication', 'procedure_code','admit_date'], 'safe'],
             [['age_type', 'tsh_pku_result', 'ivh_result', 'summary'], 'string'],
             [['head_size', 'height', 'weight', 'waist'], 'number'],
             [['seq', 'hn', 'inp_id'], 'string', 'max' => 15],
@@ -101,6 +101,7 @@ class Visit extends \yii\db\ActiveRecord
             [['ga', 'hc', 'length', 'af', 'x'], 'string', 'max' => 20],
             [['foster_name','age'], 'string', 'max' => 100],
             [['vaccine_other'], 'string', 'max' => 200],
+            [['admit_ward'], 'string', 'max' => 150],
             [['refer_province_code', 'refer_hospcode', 'refer_from_hospcode'], 'string', 'max' => 6],
         ];
     }
@@ -111,7 +112,7 @@ class Visit extends \yii\db\ActiveRecord
         [
             'class' => AttributeValueBehavior::className(),
             'attributes' => [
-                ActiveRecord::EVENT_AFTER_FIND => ['date', 'discharge_date', 'refer_date'],
+                ActiveRecord::EVENT_AFTER_FIND => ['date', 'discharge_date', 'refer_date','admit_date'],
             ],
             'value' => function ($event, $attribute) {
                 return $this->setThaiFormatdate($attribute);
@@ -120,8 +121,8 @@ class Visit extends \yii\db\ActiveRecord
         [
             'class' => AttributeValueBehavior::className(),
             'attributes' => [
-              ActiveRecord::EVENT_BEFORE_INSERT => ['date', 'discharge_date', 'refer_date'],
-              ActiveRecord::EVENT_BEFORE_UPDATE => ['date', 'discharge_date', 'refer_date'],
+              ActiveRecord::EVENT_BEFORE_INSERT => ['date', 'discharge_date', 'refer_date','admit_date'],
+              ActiveRecord::EVENT_BEFORE_UPDATE => ['date', 'discharge_date', 'refer_date','admit_date'],
             ],
             'value' => function ($event, $attribute) {
                 return $this->setStandardFormatdate($attribute);
@@ -219,6 +220,9 @@ class Visit extends \yii\db\ActiveRecord
             'discharge_date' => 'วันที่จำหน่าย',
             'discharge_status' => 'สถานะการจำหน่าย',
             'refer_date' => 'วันที่ส่ง Rerer',
+            'admit_date' => 'วันที่รับรักษา',
+            'admit_ward' => 'รับรักษาที่ Ward',
+            'is_admit' => 'มีการรับรักษา ( Admit )',
         ];
     }
 

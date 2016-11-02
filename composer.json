@@ -25,7 +25,8 @@
         "dektrium/yii2-user": "0.9.*@dev",
         "dektrium/yii2-rbac": "1.0.0-alpha@dev",
         "yii2assets/yii2-fullscreen-modal": "*",
-        "rmrevin/yii2-minify-view": "~1.13"
+        "rmrevin/yii2-minify-view": "~1.13",
+        "kartik-v/yii2-checkbox-x": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

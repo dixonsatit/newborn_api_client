@@ -99,7 +99,7 @@ class Person extends ActiveRecord
     public function rules()
     {
         return [
-            [['hospcode', 'pid', 'cid', 'prename', 'name', 'lname', 'sex', 'birth','mother','mother_name'], 'required'],
+            [['hospcode', 'pid', 'cid', 'prename', 'name', 'lname', 'sex', 'birth'], 'required'],
             [['birth', 'movein', 'ddischarge', 'd_update','register_date'], 'safe'],
             [['hospcode'], 'string', 'max' => 5],
             [['cid', 'father', 'mother', 'couple'], 'string', 'max' => 17],
@@ -133,7 +133,7 @@ class Person extends ActiveRecord
             [['discharge_status','discharge_age'], 'integer'],
             [['discharge_date'], 'safe'],
 
-            [['mother_drug_before_born_item','mother_drug_before_born_amount','mother_age','mother_no_of_anc','mother_vdrl','mother_hbsag','mother_congenital_disease','mother_fever','mother_water_break','mother_day_of_water_break','mother_day_of_antibiotic','mother_bloody_show','mother_problem','mother_drug_before_born','mother_amniotic_fluid_type','mother_antibiotic'], 'integer'],
+            [['mother_drug_before_born_item','mother_drug_before_born_amount','mother_age','mother_no_of_anc','mother_vdrl','mother_hbsag','mother_congenital_disease','mother_fever','mother_water_break','mother_day_of_water_break','mother_day_of_antibiotic','mother_bloody_show','mother_problem','mother_drug_before_born','mother_amniotic_fluid_type','mother_antibiotic','unknown_parents'], 'integer'],
             [['mother_g','mother_p'], 'string', 'max' => 20],
             [['mother_hn','mother_an'], 'string', 'max' => 30],
             [['mother_antibiotic_name','mother_drug_name_before_born'], 'string', 'max' => 150],
@@ -244,6 +244,7 @@ class Person extends ActiveRecord
             'mother_drug_name_before_born'=>'ถ้าได้รับระบุ',
             'mother_drug_before_born_amount'=>'จำนวน (Dose)',
             'mother_amniotic_fluid_type'=>'ลักษณะน้ำคร่ำ',
+            'unknown_parents' => 'ไม่ทราบ'
 
         ];
     }

@@ -18,7 +18,7 @@ use kartik\typeahead\Typeahead;
 
   <div class="xpanel-heading-sm">
       <span class="xpanel-title">
-        รายละเอียด Admit
+        รายละเอียดการคลอด
       </span>
       <span class="pull-right"><?= $submit = Html::submitButton('บันทึก', ['style'=>'min-width:150px;', 'class' => 'btn btn-primary']) ?></span>
   </div>
@@ -34,29 +34,6 @@ use kartik\typeahead\Typeahead;
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-sm-3">
-        <?= $form->field($model, 'admit_datetime')->widget(MaskedInput::className(), ['mask' => '99-99-9999 99:99:00']) ?>
-      </div>
-      <div class="col-sm-6">
-        <?= $form->field($model, 'admit_wardname')->textInput(['maxlength' => true]) ?>
-      </div>
-      <div class="col-sm-3">
-        <?= $form->field($model, 'admit_age')->textInput(['maxlength' => true]) ?>
-      </div>
-    </div>
-
-  </div>
-  </div>
-
-  <div class="xpanel">
-    <div class="xpanel-heading-sm">
-        <span class="xpanel-title">
-          รายละเอียดการคลอด
-        </span>
-    </div>
-
-    <div class="panel-body person-form">
       <div class="row">
         <div class="col-md-2">
             <?= $form->field($model, 'ga')->textInput() ?>
