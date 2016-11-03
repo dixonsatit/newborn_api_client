@@ -149,6 +149,15 @@ class VisitController extends Controller
         }
     }
 
+    public function loadPersonDataToVisit($person,$visit){
+        if($person->isOwnHospital){
+            $visit->hn = $person->pid;
+            $visit->ga = $person->ga;
+            $visit->weight = $person->birth_weight;
+        }
+        return $visit;
+    }
+
     /**
      * Creates a new Visit model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -169,6 +178,7 @@ class VisitController extends Controller
           'admit_date' => '0000-00-00',
           'refer_from_hospcode' => $refer !== null ? $refer->hospcode : null
         ]);
+        $model = $this->loadPersonDataToVisit($person,$model);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
               if($refer != null){

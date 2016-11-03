@@ -280,4 +280,9 @@ class Person extends ActiveRecord
         return $this->getRelationField('hospital','name');
     }
 
+    public function getIsOwnHospital()
+    {
+        return $this->hospcode == Yii::$app->user->identity->profile->hcode;
+    }
+
 }
