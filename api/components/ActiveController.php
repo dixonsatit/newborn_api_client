@@ -10,6 +10,7 @@ use yii\helpers\ArrayHelper;
 use yii\rest\ActiveController as BaseActiveController;
 use dixonsatit\yii2\oauth2server\filters\ErrorToExceptionFilter;
 use common\models\User;
+use yii\filters\Cors;
 
 
 class ActiveController extends BaseActiveController
@@ -22,7 +23,16 @@ class ActiveController extends BaseActiveController
 
   public function behaviors()
   {
-       $default = [
+       return ArrayHelper::merge(parent::behaviors(), [
+            [
+                'class' => Cors::className(),
+                'cors' => [
+                    'Origin' => ['http://app-frontend.dev:8080'],
+                    'Access-Control-Request-Headers' => ['*'],
+                    'Access-Control-Request-Method' => ['GET', 'HEAD', 'OPTIONS'],
+                    'Access-Control-Allow-Credentials' => false
+                ],
+            ],
             'authenticator' => [
                 'class' => \yii\filters\auth\CompositeAuth::className(),
                 'authMethods' => [
@@ -42,9 +52,7 @@ class ActiveController extends BaseActiveController
                     ['class' => QueryParamAuth::className()],
                 ]
             ],
-      ];
-
-       return ArrayHelper::merge(parent::behaviors(), Yii::$app->params['authenMode'] == 'oauth2server' ? $oauth2server : $default);
+      ]);
   }
 
 }

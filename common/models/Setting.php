@@ -99,6 +99,11 @@ class Setting extends \yii\db\ActiveRecord
           'dblib' => 'MS SQL Server (via dblib driver)',
           'mssql' => 'MS SQL Server (via mssql driver)',
           'oci' => 'Oracle'
+        ],
+        'api_type' => [
+            'kkh'=>'Khon Kaen Hospital',
+            'hosxp'=>'HosXP',
+            'jhcis'=>'JHCIS'
         ]
       ];
       return array_key_exists($key, $items) ? $items[$key] : [];
@@ -106,6 +111,9 @@ class Setting extends \yii\db\ActiveRecord
 
     public function getDriverItems(){
       return $this->itemsAilas('driver');
+    }
+    public function getApiTypeItems(){
+      return $this->itemsAilas('api_type');
     }
 
     public static function loadConfig($hcode){

@@ -31,6 +31,10 @@ class SearchAction extends Action {
 
     public $likeField = [];
 
+    public $queryParamsName = 'q';
+
+    public $queryCondition;
+
     /**
      * @return ActiveDataProvider
      */
@@ -47,43 +51,29 @@ class SearchAction extends Action {
      * @return ActiveDataProvider
      */
     protected function prepareDataProvider() {
+
+        $modelClass = $this->modelClass;
+        $model      = new $this->modelClass();
+        $query      = $modelClass::find();
+
         if ($this->prepareDataProvider !== null) {
-            return call_user_func($this->prepareDataProvider, $this);
+            return call_user_func($this->prepareDataProvider, $this, $model, $query, $modelClass);
         }
 
         if(!$this->params){
           throw new \yii\web\HttpException(400, 'There are no query string');
         }
 
-        /**
-         * @var \yii\db\BaseActiveRecord $modelClass
-         */
-        $modelClass = $this->modelClass;
-
-        $model = new $this->modelClass([
+        $this->removeConflictParams([
+          'access-token',
+          'page'
         ]);
-
-        $safeAttributes = $model->safeAttributes();
-        $params = array();
-        if(array_key_exists('access-token', $this->params)){
-          unset($this->params['access-token']);
-        }
-
-        foreach($this->params as $key => $value){
-            if (!$model->hasAttribute($key)) {
-                throw new \yii\web\HttpException(404, 'Invalid attribute:' . $key);
-            }
-            if(in_array($key, $safeAttributes)){
-               $params[$key] = $value;
-            }
-        }
-
-        $query = $modelClass::find();
 
         $dataProvider = new ActiveDataProvider([
-            'query' => $query,
+          'query' => $query
         ]);
 
+        $params = $this->getSearchParams($model);
         if (empty($params)) {
             return $dataProvider;
         }
@@ -97,6 +87,27 @@ class SearchAction extends Action {
         }
 
         return $dataProvider;
+    }
+
+    private function removeConflictParams($params){
+      foreach ($params as $key => $value) {
+        if(array_key_exists($value, $this->params)){
+          unset($this->params[$value]);
+        }
+      }
+    }
+
+    private function getSearchParams($model){
+      $params = [];
+      foreach($this->params as $key => $value){
+          if (!$model->hasAttribute($key)) {
+              throw new \yii\web\HttpException(404, 'Invalid attribute:' . $key);
+          }
+          if(in_array($key, $model->safeAttributes())){
+             $params[$key] = $value;
+          }
+      }
+      return $params;
     }
 
 }
