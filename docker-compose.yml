@@ -24,9 +24,6 @@ services:
     restart: always
     volumes:
       - .:/var/www/html
-      - ./docker/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
-      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
-      - ./docker/logs/php-fpm:/var/log/php-fpm
     expose:
       - "9000"
     networks:

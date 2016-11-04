@@ -27,7 +27,10 @@ class PatientController extends ActiveController
                 'prepareDataProvider' => function($action, $model, $query, $modelClass){
 
                   $dataProvider = new ActiveDataProvider([
-                    'query' => $query
+                    'query' => $query,
+                    'sort' => [
+                        'defaultOrder' => ['ref' => SORT_DESC]
+                    ]
                   ]);
 
                   $q = Yii::$app->request->get('q');

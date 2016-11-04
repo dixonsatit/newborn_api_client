@@ -66,7 +66,8 @@ class SearchAction extends Action {
 
         $this->removeConflictParams([
           'access-token',
-          'page'
+          'page',
+          'expand'
         ]);
 
         $dataProvider = new ActiveDataProvider([

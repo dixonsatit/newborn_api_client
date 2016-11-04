@@ -3,6 +3,7 @@
 namespace api\modules\kkh\modules\v1\models;
 
 use Yii;
+use \api\modules\kkh\modules\v1\models\Patient;
 
 /**
  * This is the model class for table "ipd_inf".
@@ -229,5 +230,18 @@ class IpdInf extends \yii\db\ActiveRecord
     public static function find()
     {
         return new IpdInfQuery(get_called_class());
+    }
+
+    public function getPatient() {
+        return $this->hasOne(Patient::className(), ['hn' => 'hn']);
+    }
+
+    public function getIpdobs() {
+        return $this->hasOne(IpdObs::className(), ['an' => 'an_mat']);
+    }
+
+    public function extraFields()
+    {
+        return ['patient','ipdobs'];
     }
 }
