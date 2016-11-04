@@ -26,7 +26,7 @@
         "dektrium/yii2-rbac": "1.0.0-alpha@dev",
         "yii2assets/yii2-fullscreen-modal": "*",
         "rmrevin/yii2-minify-view": "~1.13",
-        "mdmsoft/yii2-admin": "~3.0"
+        "kartik-v/yii2-checkbox-x": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -39,6 +39,10 @@
         "process-timeout": 1800
     },
     "extra": {
+        "asset-registry-options": {
+            "npm-searchable": false,
+            "bower-searchable": false
+        },
         "asset-installer-paths": {
             "npm-asset-library": "vendor/npm",
             "bower-asset-library": "vendor/bower"
@@ -46,7 +50,6 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "composer config -g github-oauth.github.com bb94d2416480e76c42244d1f44902584412f8667",
             "php init --env=Development --overwrite=n"
         ]
     }

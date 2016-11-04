@@ -23,12 +23,13 @@ use dektrium\user\models\User as BaseUser;
  */
 class User extends BaseUser
 {
+    
     /**
      * @inheritdoc
      */
      public static function findIdentityByAccessToken($token, $type = null)
      {
-         return static::findOne(['access_token' => $token,'status' => self::STATUS_ACTIVE]);
+         return static::findOne(['access_token' => $token]);
      }
 
      /**
@@ -37,5 +38,16 @@ class User extends BaseUser
      public function generateAccessToken()
      {
         $this->access_token = Yii::$app->security->generateRandomString();
+     }
+
+     public function beforeSave($insert)
+     {
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+                $this->generateAccessToken();
+            }
+            return true;
+        }
+        return false;
      }
 }

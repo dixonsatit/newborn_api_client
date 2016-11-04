@@ -9,53 +9,70 @@ $params = array_merge(
 return [
     'id' => 'app-api',
     'basePath' => dirname(__DIR__),
+    'controllerNamespace' => 'api\controllers',
     'bootstrap' => ['log'],
-    'defaultRoute'=>'v1/user',
     'modules' => [
-        'v1' => [
-            'basePath' => '@app/modules/v1',
-            'class' => 'api\modules\v1\Module',
+        'hosxp' => [
+            'class' => 'api\modules\hosxp\Module',
+        ],
+        'kkh' => [
+            'class' => 'api\modules\kkh\Module',
+        ],
+        'jhcis' => [
+            'class' => 'api\modules\jhcis\Module',
+        ],
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'enableFlashMessages' => false,
+            'admins' => ['admin'],
+            'modelMap' => [
+              'Profile' => 'common\models\Profile',
+              'User' => 'common\models\user\User',
+            ],
         ],
     ],
     'components' => [
+        // 'api' => function(yii\web\User $user){
+        //     $db = \common\models\Setting::loadConfig($user->identity->profile->hcode);
+        //     return $db;
+        // },
+         'api' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=192.168.0.218;dbname=hospdata',
+            'username' => 'user1',
+            'password' => 'user123',
+            'charset' => 'utf8',
+        ],
         'request' => [
+            'csrfParam' => '_csrf-api',
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
             ]
         ],
-        'response' => [
-            'class' => 'yii\web\Response',
-            'format' => yii\web\Response::FORMAT_JSON,
-            'charset' => 'UTF-8',
-            'on beforeSend' => function ($event) {
-                $response = $event->sender;
-                if ($response->data !== null && Yii::$app->request->get('suppress_response_code')) {
-                    $response->data = [
-                        'success' => $response->isSuccessful,
-                        'data' => $response->data,
-                    ];
-                    $response->statusCode = 200;
-                }
-                return $response;
-            },
-        ],
         'user' => [
-            // 'identityClass' => 'dektrium\user\models\User',
+            //'identityClass' => 'common\models\User',
             'identityClass' => 'common\models\user\User',
-            'enableAutoLogin' => false,
-            'enableSession' => false,
-            'loginUrl'=> null
+            'enableAutoLogin' => true,
+            'identityCookie' => ['name' => '_identity-api', 'httpOnly' => true],
+        ],
+        'session' => [
+            // this is the name of the session cookie used for login on the api
+            'name' => 'advanced-api',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => 'yii\log\DbTarget',
-                    'levels' => ['error', 'warning']
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
                 ],
             ],
         ],
-        'urlManager' => require(__DIR__.'/_urlManager.php'),
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
+        'urlManager' => require(__DIR__ . '/_urlManager.php')
+        
     ],
     'params' => $params,
 ];
