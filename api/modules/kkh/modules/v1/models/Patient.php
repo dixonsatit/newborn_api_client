@@ -201,8 +201,17 @@ class Patient extends \yii\db\ActiveRecord
         return $this->hasOne(IpdInf::className(), ['hn' => 'hn']);
     }
 
+    public function getIpdobs() {
+         if(isset($this->ipdinf)) {
+             if(isset($this->ipdinf->ipdobs)){
+                 return $this->ipdinf->ipdobs;
+             }
+         }
+         return null;
+    }
+
     public function extraFields()
     {
-        return ['ipdinf'];
+        return ['ipdinf','ipdobs'];
     }
 }
