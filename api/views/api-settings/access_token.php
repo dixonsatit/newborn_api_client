@@ -20,11 +20,15 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="panel-heading">
                 <?= Html::encode($this->title) ?>
             </div>
+
             <div class="panel-body">
               <?php $form = ActiveForm::begin(); ?>
-            <div class="wel">
-            <pre><?=Yii::$app->user->identity->access_token?></pre>
-            </div>
+
+                <?= $form->field($model, 'access_token')->textInput([
+                    'readonly'=>'readonly',
+                ]) ?>
+
+                <?= Html::submitButton('Reset Token', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
               <?php ActiveForm::end(); ?>
             </div>
         </div>

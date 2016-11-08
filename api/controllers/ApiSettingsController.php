@@ -4,6 +4,7 @@ namespace api\controllers;
 
 use Yii;
 use common\models\Setting;
+use common\models\user\User;
 use frontend\models\SettingSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -88,8 +89,16 @@ class ApiSettingsController extends Controller
     }
 
     public function actionAccessToken(){
-        return $this->render('access_token',[
+        $model = Yii::$app->user->identity;
 
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->generateAccessToken();
+            $model->save();
+            Yii::$app->session->setFlash('success', 'เปลี่ยน Access Token เป็นรหัสใหม่เรียบร้อย');
+            $this->refresh();
+        }
+        return $this->render('access_token',[
+            'model'=>$model
         ]);
     }
 
