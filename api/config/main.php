@@ -32,17 +32,17 @@ return [
         ],
     ],
     'components' => [
-        // 'api' => function(yii\web\User $user){
-        //     $db = \common\models\Setting::loadConfig($user->identity->profile->hcode);
-        //     return $db;
-        // },
-         'api' => [
+         'api' => function(yii\web\User $user){
+             $db = \common\models\Setting::loadConfig($user->identity->profile->hcode);
+             return $db;
+         },
+        /*'api' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=192.168.0.218;dbname=hospdata',
             'username' => 'user1',
             'password' => 'user123',
             'charset' => 'utf8',
-        ],
+        ],*/
         'request' => [
             'csrfParam' => '_csrf-api',
             'parsers' => [
@@ -72,7 +72,7 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => require(__DIR__ . '/_urlManager.php')
-        
+
     ],
     'params' => $params,
 ];

@@ -17,6 +17,7 @@ use yii\db\ActiveRecord;
  */
 class Setting extends \yii\db\ActiveRecord
 {
+    static $config = [];
 
     public function behaviors()
     {
@@ -28,7 +29,7 @@ class Setting extends \yii\db\ActiveRecord
                     ActiveRecord::EVENT_BEFORE_UPDATE => 'value',
                 ],
                 'value' => function ($event) {
-                    return $this->encryptValue($this->value);
+                    return static::encryptValue($this->value);
                 },
             ],
             [
@@ -37,7 +38,7 @@ class Setting extends \yii\db\ActiveRecord
                     ActiveRecord::EVENT_AFTER_FIND => 'value',
                 ],
                 'value' => function ($event) {
-                    return $this->decryptValue($this->value);
+                    return static::decryptValue($this->value);
                 },
             ],
         ];
@@ -104,6 +105,9 @@ class Setting extends \yii\db\ActiveRecord
             'kkh'=>'Khon Kaen Hospital',
             'hosxp'=>'HosXP',
             'jhcis'=>'JHCIS'
+        ],
+        'version' => [
+            'v1'=>'Version 1',
         ]
       ];
       return array_key_exists($key, $items) ? $items[$key] : [];
@@ -112,8 +116,13 @@ class Setting extends \yii\db\ActiveRecord
     public function getDriverItems(){
       return $this->itemsAilas('driver');
     }
+
     public function getApiTypeItems(){
       return $this->itemsAilas('api_type');
+    }
+
+    public function getVersionTypeItems(){
+      return $this->itemsAilas('version');
     }
 
     public static function loadConfig($hcode){
@@ -140,11 +149,15 @@ class Setting extends \yii\db\ActiveRecord
         ]);
     }
 
-    public function encryptValue($value){
+    public static function encryptValue($value){
       return utf8_encode(Yii::$app->getSecurity()->encryptByPassword($value , Yii::$app->params['app.secretKey']));
     }
 
-    public function decryptValue($value){
+    public static function decryptValue($value){
       return Yii::$app->getSecurity()->decryptByPassword(utf8_decode($value), Yii::$app->params['app.secretKey']);
+    }
+
+    public static function getApiUrl(){
+
     }
 }

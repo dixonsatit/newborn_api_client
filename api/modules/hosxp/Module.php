@@ -19,6 +19,10 @@ class Module extends \yii\base\Module
     {
         parent::init();
 
-        // custom initialization code goes here
+         $this->modules = [
+            'v1' => [
+                'class' => 'api\modules\hosxp\modules\v1\Module',
+            ],
+        ];
     }
 }

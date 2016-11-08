@@ -10,6 +10,7 @@ return [
                 'kkh/v1/patient',
                 'kkh/v1/ipd-inf',
                 'kkh/v1/ipd-obs',
+                'hosxp/v1/patient',
             ],
             'extraPatterns' => [
                 'GET search' => 'search',
@@ -18,7 +19,7 @@ return [
             'tokens' => [
                 '{id}' => '<id:\\w+>',
             ],
-        ],
+        ]
       ],
 ];
  ?>
