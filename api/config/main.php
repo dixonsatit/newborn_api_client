@@ -71,7 +71,14 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'urlManager' => require(__DIR__ . '/_urlManager.php')
+        'urlManager' => require(__DIR__ . '/_urlManager.php'),
+         'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@dektrium/user/views' => '@common/views/user',
+                ],
+            ],
+        ],
 
     ],
     'params' => $params,
