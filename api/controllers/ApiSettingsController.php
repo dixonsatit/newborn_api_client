@@ -73,7 +73,7 @@ class ApiSettingsController extends Controller
     protected function findModelByHcode($id)
     {
         if (($models = Setting::find()->indexBy('id')->where(['hcode'=>$id])->all()) == []) {
-          foreach (['host','database','username','password','driver','api_url','api_type','access_token','api_type'] as $key => $value) {
+          foreach (['host','database','username','password','driver','api_type'] as $key => $value) {
             $model = new Setting([
               'key'=> $value,
               'value' => NULL,
@@ -85,6 +85,12 @@ class ApiSettingsController extends Controller
         } else {
           return $models;
         }
+    }
+
+    public function actionAccessToken(){
+        return $this->render('access_token',[
+
+        ]);
     }
 
 }
