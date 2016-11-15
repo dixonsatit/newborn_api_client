@@ -40,18 +40,23 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'ลงทะเบียน', 'url' => ['/user/registration/register']];
         $menuItems[] = ['label' => 'เข้าสู่ระบบ', 'url' => ['/user/security/login']];
     } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/user/security/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
+        $menuItems[] = ['label' => ' <i class="glyphicon glyphicon-user"></i> '.strtoupper(Yii::$app->user->identity->username) .' : '.$hospitalName.'', 'items' => [
+            ['label' => 'Profile', 'url' => ['/user/settings/profile']],
+            ['label' => 'Api Setting', 'url' => ['/api-settings/index']],
+            '<li>'
+                . Html::beginForm(['/user/security/logout'], 'post')
+                . Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link']
+                )
+                . Html::endForm()
+                . '</li>'
+        ]];
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
+        'encodeLabels' => false,
     ]);
     NavBar::end();
     ?>

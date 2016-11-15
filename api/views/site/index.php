@@ -8,11 +8,8 @@ $this->title = 'Newborn Api Client';
 
     <div class="jumbotron">
         <h1>API Client!</h1>
-
-
-
-        <p><?=Html::a('ตั้งค่า API',['api-settings/index'],[
-            'class'=>'btn btn-success btn-lg'
+        <p><?=Html::a('<i class="glyphicon glyphicon-cog"></i> ตั้งค่า API',['api-settings/index'],[
+            'class'=>'btn btn-default btn-lg'
         ]);?>
 
     </div>
