@@ -1,0 +1,239 @@
+html,
+body {
+    height: 100%;
+    background-color: #f3f5f8;
+    color: #878F98;
+    font-family: HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, roboto, sans-serif;
+}
+
+
+/*=============== btn ===========================*/
+
+.btn {
+    padding: 6px 20px;
+}
+
+.btn-primary:hover {
+    background-color: #1baaf3;
+    border-color: #1baaf3;
+}
+
+.btn-primary {
+    background-color: #1aa5ec;
+    border-color: rgb(22, 153, 220);
+    font-weight: 300;
+}
+
+
+/*=============== Nav tabs ===========================*/
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:hove {
+    border: 1px solid #E0E4EA;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #E0E4EA;
+    border-bottom-right-radius: 3;
+}
+
+
+/*=============== xpanel ===========================*/
+
+.xpanel-tab {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+    border-radius: 0 0 3px 3px;
+    margin: 0 auto;
+    border: 1px solid #E0E4EA;
+    border-top: none;
+    padding: 0;
+    background-color: #fff;
+}
+
+.xpanel {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+    border-radius: 3px;
+    margin: 10px auto;
+    border: 1px solid #E0E4EA;
+    padding: 0;
+    background-color: #fff;
+}
+
+.xpanel-heading {
+    padding: 30px 34px 32px 33px;
+    border-bottom: 1px solid #eceff2;
+}
+
+.xpanel-heading-info {
+    padding: 6px 20px;
+    border-bottom: 1px solid #eceff2;
+    margin-bottom: 10px;
+}
+
+.xpanel-heading-info label {
+    padding: 0 10px;
+}
+
+.xpanel-title {
+    font-size: 20px;
+    color: #22282B;
+}
+
+.xpanel-heading-sm {
+    padding: 20px 34px 20px 34px;
+    border-bottom: 1px solid #eceff2;
+}
+
+.xpanel-heading-sm>.xpanel-title {
+    font-size: 18px;
+    color: #315566;
+}
+
+.xpanel-body {
+    padding: 25px;
+}
+
+.xpanel-footer {}
+
+
+/*=============== Navbar ===========================*/
+
+.navbar-default {
+    background-color: #1799dd;
+    border-color: #37a9e6;
+}
+
+.navbar-default .navbar-brand {
+    color: #ecf0f1;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-text {
+    color: #ecf0f1;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #ecf0f1;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #ffffff;
+    background-color: #37a9e6;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+    color: #ffffff;
+    background-color: #37a9e6;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #37a9e6;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #37a9e6;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ecf0f1;
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border-color: #ecf0f1;
+}
+
+.navbar-default .navbar-link {
+    color: #ecf0f1;
+}
+
+.navbar-default .navbar-link:hover {
+    color: #ffffff;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: #ecf0f1;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+        color: #ffffff;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a,
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+        color: #ffffff;
+        background-color: #37a9e6;
+    }
+}
+
+
+/*=============== End Navbar ===========================*/
+
+.panel-default {
+    border: 1px solid #E0E4EA;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+    border-radius: 3px;
+}
+
+
+/*
+ * Override Bootstrap's default container.
+ */
+
+@media (min-width: 1200px) {
+    .container {
+        width: 970px;
+    }
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap>.container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #323940;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    color: #A8A9AC;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+
+/*===================*/
+
+.table a {
+    text-decoration: none;
+}
