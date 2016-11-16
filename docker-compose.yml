@@ -20,6 +20,7 @@ services:
     restart: always
     volumes:
       - .:/var/www/html
+      - ./docker/logs/nginx:/var/log/nginx
     expose:
       - "9000"
     networks:

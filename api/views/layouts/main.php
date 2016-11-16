@@ -34,13 +34,14 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'API Status', 'url' => ['/site/index']],
+        ['label' => 'API Documents', 'url' => ['/site/document']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'ลงทะเบียน', 'url' => ['/user/registration/register']];
         $menuItems[] = ['label' => 'เข้าสู่ระบบ', 'url' => ['/user/security/login']];
     } else {
-        $menuItems[] = ['label' => ' <i class="glyphicon glyphicon-user"></i> '.strtoupper(Yii::$app->user->identity->username) .' : '.$hospitalName.'', 'items' => [
+        $menuItems[] = ['label' => ' <i class="glyphicon glyphicon-user"></i> '.strtoupper(Yii::$app->user->identity->username), 'items' => [
             ['label' => 'Profile', 'url' => ['/user/settings/profile']],
             ['label' => 'Api Setting', 'url' => ['/api-settings/index']],
             '<li>'

@@ -28,7 +28,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index','document'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -64,6 +64,14 @@ class SiteController extends Controller
     {
         $setting = ArrayHelper::map(Setting::findAll(['hcode'=>Yii::$app->user->identity->profile->hcode]),'key','value');
         return $this->render('index',[
+            'setting'=> $setting
+        ]);
+    }
+
+    public function actionDocument()
+    {
+        $setting = ArrayHelper::map(Setting::findAll(['hcode'=>Yii::$app->user->identity->profile->hcode]),'key','value');
+        return $this->render('document',[
             'setting'=> $setting
         ]);
     }
