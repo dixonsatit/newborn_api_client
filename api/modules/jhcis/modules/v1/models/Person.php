@@ -275,4 +275,22 @@ class Person extends \yii\db\ActiveRecord
     {
         return new PersonQuery(get_called_class());
     }
+
+    public function getTitle(){
+      return $this->hasOne(Ctitle::className(),['titlecode'=>'prename']);
+    }
+
+    public function getTitleName(){
+      return isset($this->title) ? $this->title->titlename : '';
+    }
+
+    public function fields()
+    {
+        $fields = [
+          'titleName'=>function($model){
+            return  $this->titleName;
+          }
+        ];
+        return array_merge(parent::fields(),$fields);
+    }
 }
