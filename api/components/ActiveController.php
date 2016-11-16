@@ -27,7 +27,7 @@ class ActiveController extends BaseActiveController
             [
                 'class' => Cors::className(),
                 'cors' => [
-                    'Origin' => ['http://app-frontend.dev:8080','http://dc7.healtharea.net'],
+                    'Origin' => explode(',',getenv('ALLOW_ORIGIN')),
                     'Access-Control-Request-Headers' => ['*'],
                     'Access-Control-Request-Method' => ['GET', 'HEAD', 'OPTIONS'],
                     'Access-Control-Allow-Credentials' => false
