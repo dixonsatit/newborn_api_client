@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Nov 17, 2016 at 05:08 PM
+-- Generation Time: Nov 17, 2016 at 05:18 PM
 -- Server version: 10.1.17-MariaDB-1~jessie
 -- PHP Version: 5.6.21
 
@@ -281,19 +281,6 @@ CREATE TABLE `settings` (
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `settings`
---
-
-INSERT INTO `settings` (`id`, `type`, `key`, `value`, `hcode`, `created_by`, `updated_by`) VALUES
-(1, NULL, 'host', 'qAoö[¦øÌ®úõó[f99c5dfa4346caed3711ea3f7a99c8b17131a3ca071ab1532a5e9f4ca4eb183aÿ¢³ÕÍÇL\r³ÁT=ÚØÅßô²&¡', NULL, 1, 1),
-(2, NULL, 'database', 'F*Ì²XÃ\'³Ê85495e333d0309b449196139f18872281d1b3ebbe43ff4c9b3480d86539b5950¢ákKyiY¯Äêóu¤TåK©:£;CåU', NULL, 1, 1),
-(3, NULL, 'username', '£KöXpëÒUâú«¬3467f0a907d3e40725bce6ba1d02d7f556f1a273975b1c9e863b3267fdede346<Î?L(ÓêÌ|*Òç\n~ÛïõØ*+zÊPýqÔ', NULL, 1, 1),
-(4, NULL, 'password', ']zq§@Ï·Õ98760170b83ab45585b0e44d6abc89ca8ab1beb0dd3ee8863009fcc118cb230c0°ïÛÊYUQ\'ð½}5Àæ¬å³ ¹', NULL, 1, 1),
-(5, NULL, 'driver', 'ÔqôQ\\ÜlËNë»5713fb41c600ce7a7adec459a0e99194c844c71a16f37e6342f41f2020a4229a@¹ qÖ	ÿ°\r®fgªTéÆsKGmQ', NULL, 1, 1),
-(6, NULL, 'api_type', 'X09WéUNÚxk©//³ñ95588c8aa1eb51e871fd05e7b1983e535cb67fa7215def3e9411a2fcb1eac4b9­=­XýTÏ]aÂPUüíz[g4sC³êt^*Zl', NULL, 1, 1),
-(7, NULL, 'version', '¡E,pñZ«S¥¾ßîf8aafce61e60fc8dac192fefaf5508b55e0f153dbe54481d256b45365f81470db¦HðjÜeÜÅ7.i³aqÝ/D"(ºÈ0_2\\', NULL, 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -447,7 +434,7 @@ ALTER TABLE `log`
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `social_account`
 --
