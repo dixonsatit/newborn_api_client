@@ -1,15 +1,15 @@
 <?php
 
-namespace api\modules\kkh\modules\v1\controllers;
+namespace api\modules\jhcis\modules\v1\controllers;
 
 use Yii;
 use api\components\ActiveController;
 use yii\data\ActiveDataProvider;
 use yii\web\Response;
 
-class IpdInfController extends ActiveController
+class PatientController extends ActiveController
 {
-     public $modelClass = 'api\modules\kkh\modules\v1\models\IpdInf';
+     public $modelClass = 'api\modules\jhcis\modules\v1\models\Person';
 
      public function actions() {
          $actions = [
@@ -20,7 +20,7 @@ class IpdInfController extends ActiveController
                  'params'      => Yii::$app->request->get(),
                  'likeField' => ['name']
              ],
-            'list' => [
+             'list' => [
                 'class'       => 'api\components\actions\SearchAction',
                 'modelClass'  => $this->modelClass,
                 'params'      => Yii::$app->request->get(),
@@ -29,7 +29,7 @@ class IpdInfController extends ActiveController
                   $dataProvider = new ActiveDataProvider([
                     'query' => $query,
                     'sort' => [
-                        'defaultOrder' => ['lastupdate' => SORT_DESC]
+                        'defaultOrder' => ['pid' => SORT_DESC]
                     ]
                   ]);
 
@@ -38,19 +38,19 @@ class IpdInfController extends ActiveController
                   $count = count($param);
                   if($count > 1){
                         list($fname,$lname) = $param;
-                        // $query->andWhere(' name LIKE :fname AND surname LIKE :lname', [
-                        //   ':fname' => ''.$fname.'%',
-                        //   ':lname' => ''.$lname.'%'
-                        // ]);
+                        $query->andWhere(' fname LIKE :fname AND lname LIKE :lname', [
+                          ':fname' => ''.$fname.'%',
+                          ':lname' => ''.$lname.'%'
+                        ]);
                     }else{
                         if((int)$q > 0){
                             $query->andFilterWhere([
-                                'hn' => $q
+                                'pid' => $q
                             ]);
                         }else{
-                            // $query->andWhere('name LIKE :q OR surname LIKE :q', [
-                            //     ':q' => ''.Yii::$app->request->get('q').'%',
-                            // ]);
+                            $query->andWhere('fname LIKE :q OR lname LIKE :q', [
+                                ':q' => ''.Yii::$app->request->get('q').'%',
+                            ]);
                         }
                     }
 
@@ -58,7 +58,6 @@ class IpdInfController extends ActiveController
                 }
             ],
          ];
-
          $parentActions = parent::actions();
          unset($parentActions['delete'], $parentActions['create'],$parentActions['update']);
          return array_merge(parent::actions(), $actions);

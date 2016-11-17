@@ -22,6 +22,8 @@ class IpdObsController extends ActiveController
              ]
          ];
 
+         $parentActions = parent::actions();
+         unset($parentActions['delete'], $parentActions['create'],$parentActions['update']);
          return array_merge(parent::actions(), $actions);
      }
 

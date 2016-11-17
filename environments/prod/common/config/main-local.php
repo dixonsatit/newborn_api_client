@@ -3,10 +3,10 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=db;dbname=nb_db',
-            'username' => 'newborn',
-            'password' => '123456',
-            'charset' => 'utf8',
+            'dsn' => 'mysql:host='.getenv('DB_HOST').';port='.getenv('MYSQL_PORT').';dbname='.getenv('MYSQL_DATABASE'),
+            'username' => getenv('MYSQL_USER'),
+            'password' => getenv('MYSQL_PASSWORD'),
+            'charset' => 'utf8'
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

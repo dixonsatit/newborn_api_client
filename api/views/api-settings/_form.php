@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
          echo $form->field($model,"[$key]value")->dropdownList($model->getApiTypeItems())->label(ucfirst($model->key));
      }elseif($model->key == 'version'){
          echo $form->field($model,"[$key]value")->dropdownList($model->getVersionTypeItems())->label(ucfirst($model->key));
+     }elseif($model->key == 'password'){
+        echo $form->field($model, "[$key]value")->passwordInput(['maxlength' => true])->label(ucfirst($model->key));
      }else{
          echo $form->field($model, "[$key]value")->textInput(['maxlength' => true])->label(ucfirst($model->key));
      }

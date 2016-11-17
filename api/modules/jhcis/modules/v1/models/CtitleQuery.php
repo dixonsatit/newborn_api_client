@@ -1,23 +1,22 @@
 <?php
 
-namespace api\modules\v1\models\query;
+namespace api\modules\jhcis\modules\v1\models;
 
 /**
- * This is the ActiveQuery class for [[User]].
+ * This is the ActiveQuery class for [[Ctitle]].
  *
- * @see User
+ * @see Ctitle
  */
-class UserQuery extends \yii\db\ActiveQuery
+class CtitleQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
-        $this->andWhere('[[status]]=1');
-        return $this;
+        return $this->andWhere('[[status]]=1');
     }*/
 
     /**
      * @inheritdoc
-     * @return User[]|array
+     * @return Ctitle[]|array
      */
     public function all($db = null)
     {
@@ -26,7 +25,7 @@ class UserQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return User|array|null
+     * @return Ctitle|array|null
      */
     public function one($db = null)
     {

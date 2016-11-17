@@ -43,6 +43,9 @@ return [
             'password' => 'user123',
             'charset' => 'utf8',
         ],*/
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         'request' => [
             'csrfParam' => '_csrf-api',
             'parsers' => [
@@ -63,7 +66,7 @@ return [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class' => 'yii\log\DbTarget',
                     'levels' => ['error', 'warning'],
                 ],
             ],
@@ -72,7 +75,7 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => require(__DIR__ . '/_urlManager.php'),
-         'view' => [
+        'view' => [
             'theme' => [
                 'pathMap' => [
                     '@dektrium/user/views' => '@common/views/user',

@@ -1,13 +1,13 @@
 <?php
 
-namespace api\modules\v1\models\query;
+namespace api\modules\jhcis\modules\v1\models;
 
 /**
- * This is the ActiveQuery class for [[\api\modules\v1\models\Todo]].
+ * This is the ActiveQuery class for [[Person]].
  *
- * @see \api\modules\v1\models\Todo
+ * @see Person
  */
-class TodoQuery extends \yii\db\ActiveQuery
+class PersonQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class TodoQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return \api\modules\v1\models\Todo[]|array
+     * @return Person[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class TodoQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return \api\modules\v1\models\Todo|array|null
+     * @return Person|array|null
      */
     public function one($db = null)
     {
