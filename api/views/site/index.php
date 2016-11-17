@@ -13,7 +13,7 @@ $baseApiUrl = Url::base(true).'/'.$apiType.'/'.$apiVersion.'/';
 <div class="site-index">
 
     <div class="jumbotron">
-        <p><?=Html::a('<i class="glyphicon glyphicon-cog"></i> ตั้งค่า API V.1.0.0',['api-settings/index'],[
+        <p><?=Html::a('<i class="glyphicon glyphicon-cog"></i> ตั้งค่า API V.1.0.5',['api-settings/index'],[
             'class'=>'btn btn-default btn-lg'
         ]);?>
 
