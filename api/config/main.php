@@ -21,6 +21,9 @@ return [
         'jhcis' => [
             'class' => 'api\modules\jhcis\Module',
         ],
+        'medeesoft' => [
+            'class' => 'api\modules\medeesoft\Module',
+        ],
         'user' => [
             'class' => 'dektrium\user\Module',
             'enableFlashMessages' => false,

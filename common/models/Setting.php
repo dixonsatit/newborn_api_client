@@ -103,8 +103,9 @@ class Setting extends \yii\db\ActiveRecord
         ],
         'api_type' => [
             'kkh'=>'Khon Kaen Hospital',
-            'hosxp'=>'HosXP',
-            'jhcis'=>'JHCIS'
+            'hosxp'=>'BMS-HOSxP',
+            'jhcis'=>'JHCIS',
+            'medeesoft' => 'Medeesoft'
         ],
         'version' => [
             'v1'=>'Version 1',

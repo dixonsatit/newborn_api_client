@@ -23,6 +23,7 @@ return [
             'class' => 'yii\rest\UrlRule',
             'controller' => [
                 'jhcis/v1/patient',
+                'medeesoft/v1/patient'
             ],
             'extraPatterns' => [
                 'GET search' => 'search',
