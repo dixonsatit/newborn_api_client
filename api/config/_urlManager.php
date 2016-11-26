@@ -10,8 +10,7 @@ return [
                 'kkh/v1/patient',
                 'kkh/v1/ipd-inf',
                 'kkh/v1/ipd-obs',
-                'hosxp/v1/patient',
-                'medeesoft/v1/patient'
+                'hosxp/v1/patient'
             ],
             'extraPatterns' => [
                 'GET search' => 'search',
@@ -24,6 +23,7 @@ return [
             'class' => 'yii\rest\UrlRule',
             'controller' => [
                 'jhcis/v1/patient',
+                'medeesoft/v1/patient'
             ],
             'extraPatterns' => [
                 'GET search' => 'search',

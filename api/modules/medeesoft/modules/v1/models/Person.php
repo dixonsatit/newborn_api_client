@@ -50,6 +50,11 @@ class Person extends \yii\db\ActiveRecord
         return 'person';
     }
 
+    public static function primaryKey()
+    {
+        return ['PID'];
+    }
+
     /**
      * @return \yii\db\Connection the database connection used by this AR class.
      */
@@ -127,5 +132,15 @@ class Person extends \yii\db\ActiveRecord
     public static function find()
     {
         return new PersonQuery(get_called_class());
+    }
+
+    public function getAddress()
+    {
+        return $this->hasOne(Address::className(),['PID'=>'PID']);
+    }
+
+    public function extraFields()
+    {
+        return ['address'];
     }
 }
