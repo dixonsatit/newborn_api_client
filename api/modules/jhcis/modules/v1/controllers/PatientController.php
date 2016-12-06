@@ -34,6 +34,10 @@ class PatientController extends ActiveController
                   ]);
 
                   $q = Yii::$app->request->get('q');
+                  if($q == null){
+                      return $dataProvider;
+                  }
+
                   $param = explode(' ',$q);
                   $count = count($param);
                   if($count > 1){
