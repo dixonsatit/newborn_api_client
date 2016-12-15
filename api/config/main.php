@@ -64,6 +64,7 @@ return [
         'session' => [
             // this is the name of the session cookie used for login on the api
             'name' => 'advanced-api',
+            'class' => 'yii\redis\Session'
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
