@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
-
+use yii\web\JsExpression;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use common\models\Hospital;
@@ -77,26 +77,44 @@ $this->params['breadcrumbs'][] = $this->title;
                           <?= $form->field($model, 'mobile') ?>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-6">
-                      <?= $form->field($model, 'province_code')->dropdownList($model->getItemProvince(),[
-                                'id'=>'ddl-province',
-                                'prompt'=>'เลือกจังหวัด'
-                       ]) ?>
-                  </div>
-                  <div class="col-md-6">
-                    <?= $form->field($model, 'hcode')->widget(DepDrop::classname(), [
-                       'options'=>['id'=>'ddl-hcode'],
-                       'type'=>DepDrop::TYPE_SELECT2,
-                       'data'=> $hospital,
-                       'pluginOptions'=>[
-                           'depends'=>['ddl-province'],
-                           'placeholder'=>'เลือกสถานพยาบาล...',
-                           'url'=>Url::to(['/user/settings/get-hospital'])
-                       ]
-                   ]); ?>
-                  </div>
-                </div>
+
+<?= $form->field($model, 'hcode')->widget(Select2::className(),[
+                            'initValueText'=> $initHospital,
+                            'options' => ['placeholder' => 'เลือกสถานพยาบาล..'],
+                            'pluginOptions' => [
+                                'minimumInputLength' => 3,
+                                'allowClear' => true,
+                                'language' => [
+                                        'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
+                                ],
+                                'ajax' => [
+                                    'url' => Url::to(['/hospital/find']),
+                                    'dataType' => 'json',
+                                    
+                                    'cache'=>true,
+                                    'data' => new JsExpression('function(params) { return {q:params.term,page:params.page}; }'),
+                                    'processResults' => new JsExpression("function (data, params) {
+
+                                            var datas = $.map(data.items, function (obj) {
+                                            obj.id = obj.off_id;
+                                            obj.text =  ('('+obj.off_id+') '+obj.name);
+                                            return obj;
+                                            });
+
+                                            params.page = params.page || 1;
+
+                                            return {
+                                                results: datas,
+                                                pagination: {
+                                                more: (params.page * data._meta.perPage) < data._meta.totalCount
+                                                }
+                                            };
+                                            },
+                                        ")
+                                ]
+                            ]
+                            ]) ?>
+
 
                 <div class="form-group">
 
