@@ -14,7 +14,7 @@ use yii\helpers\Url;
 use common\models\Hospital;
 use kartik\select2\Select2;
 use kartik\depdrop\DepDrop;
-
+$initHospital = ($hospital = Hospital::find()->where(['Off_id'=>$model->hcode])->one()) !== null ? $hospital->name : '';
 /**
  * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form

@@ -28,6 +28,8 @@ return [
             'class' => 'dektrium\user\Module',
             'enableFlashMessages' => false,
             'admins' => ['admin'],
+            'enableConfirmation'=> false,
+            'enableUnconfirmedLogin'=> true,
             'modelMap' => [
               'Profile' => 'common\models\Profile',
               'User' => 'common\models\user\User',
