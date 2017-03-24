@@ -7,6 +7,7 @@ return [
         [
             'class' => 'yii\rest\UrlRule',
             'controller' => [
+                'hospital',
                 'kkh/v1/patient',
                 'kkh/v1/ipd-inf',
                 'kkh/v1/ipd-obs',

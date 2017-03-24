@@ -28,6 +28,8 @@ return [
             'class' => 'dektrium\user\Module',
             'enableFlashMessages' => false,
             'admins' => ['admin'],
+            'enableConfirmation'=> false,
+            'enableUnconfirmedLogin'=> true,
             'modelMap' => [
               'Profile' => 'common\models\Profile',
               'User' => 'common\models\user\User',
@@ -64,7 +66,6 @@ return [
         'session' => [
             // this is the name of the session cookie used for login on the api
             'name' => 'advanced-api',
-            'class' => 'yii\redis\Session'
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

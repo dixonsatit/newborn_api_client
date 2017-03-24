@@ -14,17 +14,6 @@ services:
     networks:
       - nb_api_backend
 
-  redis:
-    image: redis:3.0.7-alpine
-    container_name: nb_api_redis
-    restart: always
-    volumes:
-      - "apiredisdata:/data"
-    expose:
-      - "6379"
-    networks:
-      - nb_api_backend
-
   php:
     build: ./docker/php
     container_name: nb_api_php-fpm
