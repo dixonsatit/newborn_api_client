@@ -46,7 +46,7 @@ services:
     container_name: nb_api_phpmyadmin
     restart: always
     ports:
-      - "7000:80"
+      - "7071:80"
     networks:
       - nb_api_backend
 

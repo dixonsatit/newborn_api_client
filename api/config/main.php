@@ -24,6 +24,9 @@ return [
         'medeesoft' => [
             'class' => 'api\modules\medeesoft\Module',
         ],
+        'spmedical' => [
+            'class' => 'api\modules\spmedical\Module',
+        ],
         'user' => [
             'class' => 'dektrium\user\Module',
             'enableFlashMessages' => false,

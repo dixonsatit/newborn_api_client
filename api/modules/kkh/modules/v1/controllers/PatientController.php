@@ -46,7 +46,7 @@ class PatientController extends ActiveController
                           ':fname' => ''.$fname.'%',
                           ':lname' => ''.$lname.'%'
                         ]);
-                    }else{
+                  }else{
                         if((int)$q > 0){
                             $query->andFilterWhere([
                                 'hn' => $q

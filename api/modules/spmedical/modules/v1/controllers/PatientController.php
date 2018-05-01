@@ -1,6 +1,6 @@
 <?php
 
-namespace api\modules\hosxp\modules\v1\controllers;
+namespace api\modules\spmedical\modules\v1\controllers;
 
 use Yii;
 use api\components\ActiveController;
@@ -9,7 +9,7 @@ use yii\web\Response;
 
 class PatientController extends ActiveController
 {
-     public $modelClass = 'api\modules\hosxp\modules\v1\models\Patient';
+     public $modelClass = 'api\modules\spmedical\modules\v1\models\Patient';
 
      public function actions() {
          $actions = [

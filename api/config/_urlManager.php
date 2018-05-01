@@ -1,7 +1,7 @@
 <?php
 return [
       'enablePrettyUrl' => true,
-      'enableStrictParsing' => false,
+      'enableStrictParsing' => true,
       'showScriptName' => false,
       'rules' => [
         [
@@ -11,7 +11,8 @@ return [
                 'kkh/v1/patient',
                 'kkh/v1/ipd-inf',
                 'kkh/v1/ipd-obs',
-                'hosxp/v1/patient'
+                'hosxp/v1/patient',
+                'spmedical/v1/patient'
             ],
             'extraPatterns' => [
                 'GET search' => 'search',

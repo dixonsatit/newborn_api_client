@@ -50,7 +50,7 @@ class PatientController extends ActiveController
                             $query->andFilterWhere([
                                 'hn' => $q
                             ]);
-                        } else {
+                        }else{
                             $query->andWhere('fname LIKE :q OR lname LIKE :q', [
                                 ':q' => ''.Yii::$app->request->get('q').'%',
                             ]);
