@@ -15,7 +15,7 @@ services:
       - nb_api_backend
 
   php:
-    build: ./docker/php
+    image: yiisoftware/yii2-php:7.4-fpm
     container_name: nb_api_php-fpm
     restart: always
     volumes:
